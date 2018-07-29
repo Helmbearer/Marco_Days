@@ -10,11 +10,20 @@ var motion = Vector2()
 
 
 func _physics_process(delta):
+	update_motion(delta)
+
+func _process(delta):
+	update_animation(motion)
+
+func update_motion(delta):
 	fall(delta)
 	run()
 	jump()
 	move_and_slide(motion, UP)
 
+
+func update_animation(motion):
+	$AnimatedSprite.update(motion)
 
 func fall(delta):
 	if is_on_floor():
@@ -26,19 +35,13 @@ func fall(delta):
 func run():
 	if Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_left"):
 		motion.x = 0
-		$AnimatedSprite.play("idle")
 	elif Input.is_action_pressed("ui_right"):
 		motion.x = SPEED
-		$AnimatedSprite.flip_h = false
-		$AnimatedSprite.play("run")
 	elif Input.is_action_pressed("ui_left"):
 		motion.x = -SPEED
-		$AnimatedSprite.flip_h = true
-		$AnimatedSprite.play("run")
 	else:
 		motion.x = 0
-		$AnimatedSprite.flip_h = false
-		$AnimatedSprite.play("idle")
+		
 
 
 

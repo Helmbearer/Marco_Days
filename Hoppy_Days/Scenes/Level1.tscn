@@ -1,87 +1,41 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://GFX/Environment/ground_grass.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Camera2D.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/PlatformTiles.tres" type="TileSet" id=3]
 
 [node name="Level1" type="Node2D" index="0"]
 
 [node name="Player" parent="." index="0" instance=ExtResource( 1 )]
 
-position = Vector2( 496.533, 700.167 )
+position = Vector2( 78.1067, 887.064 )
 
-[node name="Platform" type="StaticBody2D" parent="." index="1"]
+[node name="Camera2D" parent="Player" index="2" instance=ExtResource( 2 )]
 
-editor/display_folded = true
-position = Vector2( 891.748, 529.392 )
-input_pickable = false
+zoom = Vector2( 1.5, 1.5 )
+limit_left = -300
+limit_bottom = 3000
+_sections_unfolded = [ "Limit" ]
+
+[node name="TileMap" type="TileMap" parent="." index="1"]
+
+position = Vector2( 2.78955, 41.8427 )
+mode = 0
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 64, 64 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
 collision_layer = 1
 collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Platform" index="0"]
-
-texture = ExtResource( 2 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform" index="1"]
-
-visible = false
-build_mode = 0
-polygon = PoolVector2Array( -178.476, -47.3638, 177.591, -48.3794, 189.507, -39.6407, 190.253, -10.2574, 160.462, 37.0111, -161.282, 47.7359, -166.843, 38.2027, -191.073, -14.2296, -188.266, -38.7974, -183.895, -43.8673 )
-
-[node name="Platform2" type="StaticBody2D" parent="." index="2"]
-
-editor/display_folded = true
-position = Vector2( 1473.46, 785.368 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Platform2" index="0"]
-
-texture = ExtResource( 2 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform2" index="1"]
-
-visible = false
-build_mode = 0
-polygon = PoolVector2Array( -178.476, -47.3638, 177.591, -48.3794, 189.507, -39.6407, 190.253, -10.2574, 160.462, 37.0111, -161.282, 47.7359, -166.843, 38.2027, -191.073, -14.2296, -188.266, -38.7974, -183.895, -43.8673 )
-
-[node name="Platform3" type="StaticBody2D" parent="." index="3"]
-
-editor/display_folded = true
-position = Vector2( 564.554, 906.281 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Platform3" index="0"]
-
-texture = ExtResource( 2 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform3" index="1"]
-
-visible = false
-build_mode = 0
-polygon = PoolVector2Array( -178.476, -47.3638, 177.591, -48.3794, 189.507, -39.6407, 190.253, -10.2574, 160.462, 37.0111, -161.282, 47.7359, -166.843, 38.2027, -191.073, -14.2296, -188.266, -38.7974, -183.895, -43.8673 )
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 262216, 1, 0, 524369, 5, 0, 589843, 6, 0, 589888, 1, 0, 655376, 6, 0, 720909, 6, 0, 851973, 3, 0, 852039, 1, 0, 917590, 5, 0, 983040, 6, 0, 983064, 2, 0, 983070, 2, 0, 1048636, 1, 0, 1114157, 7, 0, 1245247, 1, 0, 1376292, 0, 0, 1376309, 0, 0, 1441885, 5, 0, 1441891, 5, 0, 1441898, 5, 0, 1507375, 7, 0 )
 
 
