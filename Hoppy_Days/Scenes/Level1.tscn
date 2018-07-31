@@ -1,18 +1,22 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Camera2D.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/PlatformTiles.tres" type="TileSet" id=3]
-[ext_resource path="res://Scenes/SpikesTop.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/SpikesBottom.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scripts/GameState.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Camera2D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/PlatformTiles.tres" type="TileSet" id=4]
+[ext_resource path="res://Scenes/SpikesTop.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/SpikesBottom.tscn" type="PackedScene" id=6]
 
 [node name="Level1" type="Node2D" index="0"]
 
-[node name="Player" parent="." index="0" instance=ExtResource( 1 )]
+script = ExtResource( 1 )
+starting_lives = 3
+
+[node name="Player" parent="." index="0" instance=ExtResource( 2 )]
 
 position = Vector2( 78.1067, 887.064 )
 
-[node name="Camera2D" parent="Player" index="2" instance=ExtResource( 2 )]
+[node name="Camera2D" parent="Player" index="2" instance=ExtResource( 3 )]
 
 zoom = Vector2( 1.5, 1.5 )
 limit_left = -300
@@ -23,7 +27,7 @@ _sections_unfolded = [ "Limit" ]
 
 position = Vector2( 2.78955, 41.8427 )
 mode = 0
-tile_set = ExtResource( 3 )
+tile_set = ExtResource( 4 )
 cell_size = Vector2( 64, 64 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -43,36 +47,42 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="Spikes" type="Node2D" parent="." index="2"]
 
-[node name="SpikesTop" parent="Spikes" index="0" instance=ExtResource( 4 )]
+[node name="SpikesTop" parent="Spikes" index="0" instance=ExtResource( 5 )]
 
 position = Vector2( 451.696, 912.245 )
 
-[node name="SpikesTop5" parent="Spikes" index="1" instance=ExtResource( 4 )]
+[node name="SpikesTop5" parent="Spikes" index="1" instance=ExtResource( 5 )]
 
 position = Vector2( 5261.08, 532.069 )
 
-[node name="SpikesTop3" parent="Spikes" index="2" instance=ExtResource( 4 )]
+[node name="SpikesTop3" parent="Spikes" index="2" instance=ExtResource( 5 )]
 
 position = Vector2( 2398.94, 1354.24 )
 
-[node name="SpikesTop4" parent="Spikes" index="3" instance=ExtResource( 4 )]
+[node name="SpikesTop4" parent="Spikes" index="3" instance=ExtResource( 5 )]
 
 position = Vector2( 4142.19, 1038.97 )
 
-[node name="SpikesTop2" parent="Spikes" index="4" instance=ExtResource( 4 )]
+[node name="SpikesTop2" parent="Spikes" index="4" instance=ExtResource( 5 )]
 
 position = Vector2( 1163.97, 658.478 )
 
-[node name="SpikesBottom" parent="Spikes" index="5" instance=ExtResource( 5 )]
+[node name="SpikesBottom" parent="Spikes" index="5" instance=ExtResource( 6 )]
 
 position = Vector2( 4262.3, 729.444 )
 
-[node name="SpikesBottom2" parent="Spikes" index="6" instance=ExtResource( 5 )]
+[node name="SpikesBottom2" parent="Spikes" index="6" instance=ExtResource( 6 )]
 
 position = Vector2( 4886.66, 404.903 )
 
-[node name="SpikesBottom3" parent="Spikes" index="7" instance=ExtResource( 5 )]
+[node name="SpikesBottom3" parent="Spikes" index="7" instance=ExtResource( 6 )]
 
 position = Vector2( 2991.96, 1248.71 )
+
+[connection signal="body_entered" from="Spikes/SpikesBottom" to="Spikes/SpikesBottom" method="_on_SpikesTop_body_entered"]
+
+[connection signal="body_entered" from="Spikes/SpikesBottom2" to="Spikes/SpikesBottom2" method="_on_SpikesTop_body_entered"]
+
+[connection signal="body_entered" from="Spikes/SpikesBottom3" to="Spikes/SpikesBottom3" method="_on_SpikesTop_body_entered"]
 
 

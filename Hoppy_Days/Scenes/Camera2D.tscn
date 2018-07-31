@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scenes/ParallaxBackground.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/GUI.tscn" type="PackedScene" id=2]
 
 [node name="Camera2D" type="Camera2D"]
 
@@ -30,5 +31,7 @@ editor_draw_drag_margin = false
 [node name="ParallaxBackground" parent="." index="0" instance=ExtResource( 1 )]
 
 _sections_unfolded = [ "Scroll" ]
+
+[node name="GUI" parent="." index="1" instance=ExtResource( 2 )]
 
 
