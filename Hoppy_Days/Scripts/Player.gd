@@ -4,7 +4,7 @@ const SPEED = 750
 const GRAVITY = 3600
 const UP = Vector2(0, -1)
 const JUMP_SPEED = -1750
-
+const JUMP_BOOST = 2
 
 var motion = Vector2()
 export var world_limit = 3000
@@ -55,6 +55,11 @@ func jump():
 		motion.y = JUMP_SPEED
 		Global.jump_sfx.play()
 		
+
+
+func boost():
+	motion.y = JUMP_SPEED * JUMP_BOOST
+
 
 func hurt():
 	motion.y = JUMP_SPEED
